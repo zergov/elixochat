@@ -10,7 +10,7 @@ If you have [docker](https://www.docker.com/) and [docker-compose](https://docs.
 $ docker-compose up
 ```
 
-then, visit: [localhost](http://localhost)
+then, visit: [http://localhost](http://localhost)
 
 ## Motivations
 I'm currently learning Phoenix and all things related to Elixir and Erlang/OTP. 
