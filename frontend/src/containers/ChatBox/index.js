@@ -36,7 +36,7 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    currentRoom: "lobby",
+    currentRoom: state.chat.currentRoom,
     rooms: state.rooms,
   }
 }
