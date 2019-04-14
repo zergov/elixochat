@@ -12,8 +12,8 @@
 
 .chat {
   display: grid;
-  grid-template-areas: "chatbox room-list";
-  grid-template-columns: 65vw 25vw;
+  grid-template-areas: "room-list chatbox ";
+  grid-template-columns: 20vw 70vw;
   grid-template-rows: 80vh;
   text-align: left;
 }
@@ -33,9 +33,11 @@
   justify-content: space-between;
 }
 
+.chat .room-list ul,
 .chat .chatbox ul {
   overflow-y: scroll;
   margin-block-end: 0.2em;
+  padding-inline-start: 8px;
 }
 
 .chat .chatbox textarea {
@@ -48,7 +50,7 @@
 .chat .room-list {
   grid-area: room-list;
   border-radius: 8px;
-  margin-left: 8px;
+  margin-right: 8px;
   border: 1px solid #95a5a6;
   padding-left: 8px;
   padding-right: 8px;
