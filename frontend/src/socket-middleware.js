@@ -6,8 +6,9 @@ export default function socketMiddleware(socket) {
       const channel = channels[action.channel] = socket.channel(action.channel)
 
       // dispatch everything sent from this channel to our store.
-      channel.onMessage = (type, payload, ref) => {
-        store.dispatch({ type, payload })
+      channel.onMessage = (event, payload, ref) => {
+        if (!event.startsWith('chan_reply') && !event.startsWith('phx_reply'))
+          store.dispatch({ type: event, payload })
         return payload
       }
 
