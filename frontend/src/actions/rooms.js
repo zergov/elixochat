@@ -5,3 +5,10 @@ export function sendMessage(room, message) {
     phx: { channel: `room:${room}`}
   }
 }
+
+export function joinRoom(room) {
+  return {
+    type: "PHX_JOIN_CHANNEL",
+    channel: `room:${room}`,
+  }
+}

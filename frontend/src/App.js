@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
 import './App.css';
 
+import * as actions from './actions/rooms'
 import RoomList from './containers/RoomList'
 import ChatBox from './containers/ChatBox'
 
@@ -24,7 +25,7 @@ function App({ joinRoom }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    joinRoom: room => dispatch(({ type: "PHX_JOIN_CHANNEL", channel: `room:${room}` })),
+    joinRoom: room => dispatch((actions.joinRoom(room))),
   }
 }
 
