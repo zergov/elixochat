@@ -25,7 +25,7 @@ export default props => {
           <ul>
             { messages.map(message => <li>{message}</li>) }
           </ul>
-          <textarea onKeyDown={onMessageChange} rows="4"></textarea>
+          <textarea onKeyDown={onMessageChange}></textarea>
         </section>
         <section className="online-users">
           <ul>
