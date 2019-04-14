@@ -1,14 +1,5 @@
-.App {
+.app {
   text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
-}
-
-.App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -19,15 +10,43 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.chat {
+  display: grid;
+  grid-template-areas: "chatbox online-users";
+  grid-template-columns: 65vw 25vw;
+  grid-template-rows: 80vh;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.chat .chatbox ul li,
+.chat .online-users ul li
+{
+  list-style-type: none;
+  text-align: left;
+}
+
+.chat .chatbox {
+  grid-area: chatbox;
+  border-radius: 8px;
+  border: 1px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.chat .chatbox ul {
+  overflow-y: scroll;
+  margin-block-end: 0.2em;
+}
+
+.chat .chatbox textarea {
+  resize: none;
+  border-radius: 8px;
+  font-size: 0.6em;
+}
+
+.chat .online-users {
+  grid-area: online-users;
+  border-radius: 8px;
+  margin-left: 8px;
+  border: 1px solid blue;
 }

@@ -1,28 +1,34 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
-    );
-  }
-}
+export default props => {
+  const [messages, setMessages] = useState([])
+  const [users, setUsers] = useState(["zergov", "goyette"])
 
-export default App;
+  function updateUsers(users) {
+    setUsers(users)
+  }
+
+  function addMessage(message) {
+    setMessages([...messages, message])
+  }
+
+  return (
+    <div className="app">
+      <h1>Elixochat</h1>
+      <div className="chat">
+        <section className="chatbox">
+          <ul>
+            { messages.map(message => <li>{message}</li>) }
+          </ul>
+          <textarea rows="4"></textarea>
+        </section>
+        <section className="online-users">
+          <ul>
+            { users.map(user => <li>{user}</li>) }
+          </ul>
+        </section>
+      </div>
+    </div>
+  )
+}
