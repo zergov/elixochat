@@ -1,8 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../actions/rooms'
+import * as roomActions from '../../actions/rooms'
+import * as chatActions from '../../actions/chat'
 
-function RoomList({ rooms, joinRoom }) {
+function RoomList({ rooms, joinRoom, setCurrentRoom }) {
   function onJoinRoomChange(event) {
     if (event.key === "Enter") {
       event.preventDefault()
@@ -17,7 +18,7 @@ function RoomList({ rooms, joinRoom }) {
         <input onKeyDown={onJoinRoomChange} type="text" placeholder="join room"/>
       </div>
       <ul>
-        { rooms.map((room, i) => <li key={i}>{room}</li>) }
+        { rooms.map((room, i) => <li style={{ cursor: 'pointer' }} onClick={() => setCurrentRoom(room)} key={i}>{room}</li>) }
       </ul>
     </section>
   )
@@ -31,7 +32,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    joinRoom: room => dispatch(actions.joinRoom(room))
+    joinRoom: room => dispatch(roomActions.joinRoom(room)),
+    setCurrentRoom: room => dispatch(chatActions.setCurrentRoom(room))
   }
 }
 

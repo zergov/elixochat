@@ -12,7 +12,7 @@ function ChatBox({ rooms, sendMessage, currentRoom }) {
   function onMessageChange(event) {
     if (event.key === "Enter") {
       event.preventDefault()
-      sendMessage("lobby", event.target.value)
+      sendMessage(currentRoom, event.target.value)
       event.target.value = null
     }
   }
