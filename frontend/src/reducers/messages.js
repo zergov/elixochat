@@ -1,7 +1,7 @@
 export default (state = [], action) => {
   switch (action.type) {
     case "NEW_MESSAGE":
-      return [...state, action.message];
+      return [...state, action.payload.message];
     default:
       return state;
   }
