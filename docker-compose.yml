@@ -1,0 +1,15 @@
+version: '3'
+services:
+  elixochat:
+    build:
+      context: ./elixochat
+      dockerfile: Dockerfile
+    ports:
+      - "4000:4000"
+    command: mix phx.server
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
