@@ -12,3 +12,10 @@ export function joinRoom(room) {
     channel: `room:${room}`,
   }
 }
+
+export function leaveRoom(room) {
+  return {
+    type: "LEAVE_ROOM",
+    room,
+  }
+}

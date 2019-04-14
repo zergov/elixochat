@@ -15,6 +15,11 @@ export default function socketMiddleware(socket) {
       channel.join()
     }
 
+    if (action.type === "PHX_LEAVE_CHANNEL") {
+      channels[action.channel].leave()
+      delete channels[action.channel]
+    }
+
     // push application actions into the corresponding phoenix channel
     if (action.phx && action.phx.channel) {
       const { type, phx, ...payload } = action
