@@ -1,22 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { Socket } from 'phoenix'
+import { connect } from 'react-redux'
 import './App.css';
 
-export default props => {
+function App(props) {
   const [messages, setMessages] = useState([])
   const [users, setUsers] = useState(["zergov", "goyette"])
 
   // connect to the chat server when mounting the app
   useEffect(() => {
-    const socket = new Socket('ws://localhost:4000/socket')
-    socket.connect()
-
-    // join the lobby
-    const lobby = socket.channel('room:lobby')
-    lobby.join()
-      .receive("ok", () => addMessage("Connected to lobby.") )
-      .receive("error", ({reason}) => console.log("failed join", reason) )
-      .receive("timeout", () => console.log("Networking issue. Still waiting..."))
+    props.joinRoom("lobby")
   }, [])
 
   function addMessage(message) {
@@ -54,3 +46,11 @@ export default props => {
     </div>
   )
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    joinRoom: room => dispatch(({ type: "PHX_JOIN_CHANNEL", channel: `room:${room}` }))
+  }
+}
+
+export default connect(null, mapDispatchToProps)(App)

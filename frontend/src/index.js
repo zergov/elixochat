@@ -2,14 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import * as serviceWorker from './serviceWorker';
 
-import { createStore } from 'redux'
+import { Socket } from 'phoenix'
+import logger from 'redux-logger'
+import { applyMiddleware, createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducers from './reducers'
+
+import phoenixmiddleware from './socket-middleware.js'
 
 import App from './App';
 import './index.css';
 
-const store = createStore(reducers)
+const socket = new Socket('ws://localhost:4000/socket')
+socket.connect()
+
+const store = createStore(
+  reducers,
+  applyMiddleware(logger, phoenixmiddleware(socket))
+)
 
 ReactDOM.render(
   <Provider store={store}>
