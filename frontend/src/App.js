@@ -33,9 +33,9 @@ function App({ joinRoom, sendMessage, messages }) {
           </ul>
           <textarea onKeyDown={onMessageChange}></textarea>
         </section>
-        <section className="online-users">
+        <section className="room-list">
           <ul>
-            { ["zergov", "goyette"].map((user, i) => <li key={i}>{user}</li>) }
+            { ["lobby"].map((room, i) => <li key={i}>{room}</li>) }
           </ul>
         </section>
       </div>

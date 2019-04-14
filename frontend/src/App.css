@@ -12,14 +12,14 @@
 
 .chat {
   display: grid;
-  grid-template-areas: "chatbox online-users";
+  grid-template-areas: "chatbox room-list";
   grid-template-columns: 65vw 25vw;
   grid-template-rows: 80vh;
   text-align: left;
 }
 
 .chat .chatbox ul li,
-.chat .online-users ul li
+.chat .room-list ul li
 {
   list-style-type: none;
 }
@@ -45,8 +45,8 @@
   min-height: 50px;
 }
 
-.chat .online-users {
-  grid-area: online-users;
+.chat .room-list {
+  grid-area: room-list;
   border-radius: 8px;
   margin-left: 8px;
   border: 1px solid #95a5a6;
