@@ -4,7 +4,7 @@ import RoomListItem from '../../components/RoomListItem'
 import * as roomActions from '../../actions/rooms'
 import * as chatActions from '../../actions/chat'
 
-function RoomList({ rooms, joinRoom, leaveRoom, setCurrentRoom, leaveChannel }) {
+function RoomList({ rooms, joinRoom, leaveRoom, setCurrentRoom, leaveChannel, currentRoom }) {
   function onJoinRoomChange(event) {
     if (event.key === "Enter") {
       event.preventDefault()
@@ -27,6 +27,7 @@ function RoomList({ rooms, joinRoom, leaveRoom, setCurrentRoom, leaveChannel }) 
         { rooms.map((room, i) =>
           <RoomListItem
             key={i}
+            active={room === currentRoom}
             name={room}
             onClick={() => setCurrentRoom(room)}
             onClose={() => room !== "lobby" && leave(room)} />)
@@ -38,7 +39,8 @@ function RoomList({ rooms, joinRoom, leaveRoom, setCurrentRoom, leaveChannel }) 
 
 function mapStateToProps(state) {
   return {
-    rooms: Object.keys(state.rooms)
+    rooms: Object.keys(state.rooms),
+    currentRoom: state.chat.currentRoom,
   }
 }
 
