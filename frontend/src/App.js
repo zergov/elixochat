@@ -5,10 +5,6 @@ export default props => {
   const [messages, setMessages] = useState([])
   const [users, setUsers] = useState(["zergov", "goyette"])
 
-  function updateUsers(users) {
-    setUsers(users)
-  }
-
   function addMessage(message) {
     setMessages([...messages, message])
   }
