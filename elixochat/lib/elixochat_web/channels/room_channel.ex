@@ -12,7 +12,8 @@ defmodule ElixochatWeb.RoomChannel do
   end
 
   def handle_in("SEND_MESSAGE", %{"message" => message}, socket) do
-    broadcast!(socket, "NEW_MESSAGE", %{message: message})
+    "room:" <> room_name = socket.topic
+    broadcast!(socket, "NEW_MESSAGE", %{message: message, room_name: room_name})
     {:noreply, socket}
   end
 end
