@@ -4,7 +4,6 @@ import './App.css';
 
 function App(props) {
   const [messages, setMessages] = useState([])
-  const [users, setUsers] = useState(["zergov", "goyette"])
 
   // connect to the chat server when mounting the app
   useEffect(() => {
@@ -20,7 +19,7 @@ function App(props) {
   }
 
   function onMessageChange(event) {
-    if (event.key == "Enter") {
+    if (event.key === "Enter") {
       event.preventDefault()
       addMessage(event.target.value)
       event.target.value = null
@@ -33,13 +32,13 @@ function App(props) {
       <div className="chat">
         <section className="chatbox">
           <ul id="chat-messages">
-            { messages.map(message => <li>{message}</li>) }
+            { messages.map((message, i) => <li key={i}>{message}</li>) }
           </ul>
           <textarea onKeyDown={onMessageChange}></textarea>
         </section>
         <section className="online-users">
           <ul>
-            { users.map(user => <li>{user}</li>) }
+            { ["zergov", "goyette"].map((user, i) => <li key={i}>{user}</li>) }
           </ul>
         </section>
       </div>
