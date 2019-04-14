@@ -1,13 +1,13 @@
 import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
-import * as actions from '../../actions/messages'
+import * as actions from '../../actions/rooms'
 
-function ChatBox({ messages, sendMessage }) {
+function ChatBox({ rooms, sendMessage, currentRoom }) {
   useEffect(() => {
     // show latest message in chatbox
     const chatDOM = document.getElementById("chat-messages");
     chatDOM.scrollTop = chatDOM.scrollHeight;
-  }, [messages])
+  }, [rooms[currentRoom]])
 
   function onMessageChange(event) {
     if (event.key === "Enter") {
@@ -17,6 +17,7 @@ function ChatBox({ messages, sendMessage }) {
     }
   }
 
+  const messages = rooms[currentRoom] || []
   return (
     <section className="chatbox">
       <ul id="chat-messages">
@@ -35,7 +36,8 @@ function mapDispatchToProps(dispatch) {
 
 function mapStateToProps(state) {
   return {
-    messages: state.rooms,
+    currentRoom: "lobby",
+    rooms: state.rooms,
   }
 }
 
