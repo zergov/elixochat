@@ -13,6 +13,14 @@ export default props => {
     setMessages([...messages, message])
   }
 
+  function onMessageChange(event) {
+    if (event.key == "Enter") {
+      event.preventDefault()
+      addMessage(event.target.value)
+      event.target.value = null
+    }
+  }
+
   return (
     <div className="app">
       <h1>Elixochat</h1>
@@ -21,7 +29,7 @@ export default props => {
           <ul>
             { messages.map(message => <li>{message}</li>) }
           </ul>
-          <textarea rows="4"></textarea>
+          <textarea onKeyDown={onMessageChange} rows="4"></textarea>
         </section>
         <section className="online-users">
           <ul>
