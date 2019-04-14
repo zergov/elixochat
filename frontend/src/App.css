@@ -53,3 +53,14 @@
   padding-left: 8px;
   padding-right: 8px;
 }
+.chat .room-list .room-selection {
+  display: flex;
+  flex-direction: row;
+}
+.chat .room-list .room-selection input {
+  width: 100%;
+  padding: 4px;
+  font-size: 0.8em;
+  border: 1px solid black;
+  border-radius: 8px;
+}
