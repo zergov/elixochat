@@ -7,6 +7,10 @@ export default props => {
 
   function addMessage(message) {
     setMessages([...messages, message])
+
+    // show latest message in chatbox
+    const chatDOM = document.getElementById("chat-messages");
+    chatDOM.scrollTop = chatDOM.scrollHeight;
   }
 
   function onMessageChange(event) {
@@ -22,7 +26,7 @@ export default props => {
       <h1>Elixochat</h1>
       <div className="chat">
         <section className="chatbox">
-          <ul>
+          <ul id="chat-messages">
             { messages.map(message => <li>{message}</li>) }
           </ul>
           <textarea onKeyDown={onMessageChange}></textarea>
